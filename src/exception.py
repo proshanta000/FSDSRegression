@@ -23,8 +23,7 @@ class CustomException(Exception):
    
 
 
-
-
+'''
 if __name__=="__main__":
     logging.info("Logging has started")
 
@@ -33,3 +32,4 @@ if __name__=="__main__":
     except Exception as e:
         logging.info('Dicision by zero') 
         raise CustomException(e,sys)
+'''
