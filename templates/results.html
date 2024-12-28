@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Price Prediction Result</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+
+        }
+        .container{
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        h1{
+            text-align: center;
+            color: #007bff;
+        }
+        p{
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diamond Price Prediction Result</h1>
+
+        {% if results %}  <p>Predicted Price: ${{ results }}</p>
+        {% elif error %} <p style="color: red;">Error: {{ error }}</p>
+        {% else %}
+            <p>No results received.</p>
+        {% endif %}
+
+        <a href="/" style="display: block; margin: 20px auto; width: fit-content; background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; text-align: center;">Predict Again</a>
+    </div>
+</html>
