@@ -11,3 +11,12 @@ conda activate venv/
 ```
 pip install -r requirements.txt
 ```
+
+### Git command 
+```
+git add .
+
+git commit -m "any new name for this "
+
+git push -u origin main
+```
