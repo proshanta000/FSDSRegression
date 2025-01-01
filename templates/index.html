@@ -4,6 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mithu's Data Science Project Session</title>
+    <style>
+        .diamond-container {
+            width: 150px; /* Increased size */
+            height: 210px; /* Increased height */
+            margin: 30px auto; /* Increased margin */
+            position: relative;
+            padding-left: 130px;
+        }
+
+        .cut-diamond {
+            border-style: solid;
+            border-color: transparent transparent rgba(173, 216, 230, 0.9) transparent; /* Deeper blue (Light Blue) with higher opacity*/
+            border-width: 0 75px 75px 75px; /* Adjusted width */
+            height: 0;
+            width: 150px; /* Adjusted width */
+            box-sizing: content-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .cut-diamond:after {
+            content: "";
+            position: absolute;
+            top: 75px; /* Adjusted top */
+            left: -75px; /* Adjusted left */
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: rgba(135, 206, 235, 1) transparent transparent transparent; /* Deeper sky blue with full opacity*/
+            border-width: 150px 150px 0 150px; /* Adjusted width and height */
+        }
+
+        /* Optional: Add a subtle inner glow */
+        .cut-diamond, .cut-diamond:after {
+            filter: drop-shadow(0 0 8px rgba(173, 216, 230, 0.6)); /* Adjusted glow */
+        }
+        .main-content {
+            text-align: center; /* Center the content within the section */
+            padding: 30px; /* Increased padding around content */
+        }
+    </style>
 </head>
 <body style="font-family: sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; color: #333;">
 
@@ -14,108 +56,35 @@
 
     <main style="padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: calc(100vh - 100px);">
 
-        <section style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 80%; max-width: 800px; margin-bottom: 20px; text-align: center;">
-            <h2 style="color: #007bff;">Diamond Price Prediction</h2>
-            <form id="diamondForm" style="text-align: left;">
-                <label for="carat" style="display: block; margin-bottom: 5px;">Carat:</label>
-                <input type="number" id="carat" name="carat" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
+        <section style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 80%; max-width: 800px; margin-bottom: 20px;">
+            <div class="main-content"> <h2 style="color: #007bff;">Discover the Brilliance of Diamonds</h2>
 
-                <label for="depth" style="display: block; margin-bottom: 5px;">Depth:</label>
-                <input type="number" id="depth" name="depth" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
+                <div style="text-align: left; margin-bottom: 20px;">
+                    <p>Diamonds, renowned for their exceptional beauty and enduring strength, have captivated hearts for centuries. Their value is determined by the "4Cs":</p>
+                    <ul>
+                        <li><strong>Carat:</strong> The weight of the diamond.</li>
+                        <li><strong>Cut:</strong> How well the diamond's facets interact with light.</li>
+                        <li><strong>Color:</strong> How colorless the diamond is.</li>
+                        <li><strong>Clarity:</strong> The absence of inclusions and blemishes.</li>
+                    </ul>
+                    <p>Beyond the 4Cs, other factors like depth, table, and dimensions (x, y, z) also play a crucial role in determining a diamond's price.</p>
 
-                <label for="table" style="display: block; margin-bottom: 5px;">Table:</label>
-                <input type="number" id="table" name="table" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
+                    <div class="diamond-container">
+                        <div class="cut-diamond"></div>
+                    </div>
 
-                <label for="x" style="display: block; margin-bottom: 5px;">X:</label>
-                <input type="number" id="x" name="x" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
+                    <p>Want to estimate the price of a diamond based on its characteristics? Use our diamond price prediction tool!</p>
+                </div>
 
-                <label for="y" style="display: block; margin-bottom: 5px;">Y:</label>
-                <input type="number" id="y" name="y" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
-
-                <label for="z" style="display: block; margin-bottom: 5px;">Z:</label>
-                <input type="number" id="z" name="z" step="0.01" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;"><br><br>
-
-                <label for="cut" style="display: block; margin-bottom: 5px;">Cut:</label>
-                <select id="cut" name="cut" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
-                    <option value="Fair">Fair</option>
-                    <option value="Good">Good</option>
-                    <option value="Very Good">Very Good</option>
-                    <option value="Premium">Premium</option>
-                    <option value="Ideal">Ideal</option>
-                </select><br><br>
-
-                <label for="color" style="display: block; margin-bottom: 5px;">Color:</label>
-                <select id="color" name="color" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
-                    <option value="J">J</option>
-                    <option value="I">I</option>
-                    <option value="H">H</option>
-                    <option value="G">G</option>
-                    <option value="F">F</option>
-                    <option value="E">E</option>
-                    <option value="D">D</option>
-                </select><br><br>
-
-                <label for="clarity" style="display: block; margin-bottom: 5px;">Clarity:</label>
-                <select id="clarity" name="clarity" required style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
-                    <option value="I1">I1</option>
-                    <option value="SI2">SI2</option>
-                    <option value="SI1">SI1</option>
-                    <option value="VS2">VS2</option>
-                    <option value="VS1">VS1</option>
-                    <option value="VVS2">VVS2</option>
-                    <option value="VVS1">VVS1</option>
-                    <option value="IF">IF</option>
-                </select><br><br>
-
-                <button type="button" onclick="predictPrice()" style="background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Predict Price</button>
-            </form>
-            <div id="predictionResult" style="margin-top: 20px; font-weight: bold;"></div>
+                <a href="http://127.0.0.1:5000/predict" style="background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block;">Predict Diamond Price</a>
+            </div>
         </section>
 
-        </main>
+    </main>
 
     <footer style="background-color: #333; color: white; text-align: center; padding: 10px; position: relative; bottom: 0; width: 100%;">
         <p>&copy; 2023 Mithu's Data Science Project Session</p>
     </footer>
-
-    <script>
-        function predictPrice() {
-            // Here you would normally send the form data to your backend/API
-            // For this example, we'll just display the data entered.
-            const carat = document.getElementById("carat").value;
-            const depth = document.getElementById("depth").value;
-            const table = document.getElementById("table").value;
-            const x = document.getElementById("x").value;
-            const y = document.getElementById("y").value;
-            const z = document.getElementById("z").value;
-            const cut = document.getElementById("cut").value;
-            const color = document.getElementById("color").value;
-            const clarity = document.getElementById("clarity").value;
-
-            // Placeholder for prediction logic (replace with your actual prediction)
-            const predictedPrice = "Prediction functionality to be implemented in the backend";
-
-            const resultDiv = document.getElementById("predictionResult");
-            resultDiv.innerHTML = `Predicted Price: ${predictedPrice}`;
-
-            // In a real application, you would use fetch or AJAX to send this data to your backend
-            // and receive the actual prediction. Example using fetch:
-
-            /*
-            fetch('/predict', { // Replace '/predict' with your backend endpoint
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({carat, depth, table, x, y, z, cut, color, clarity})
-            })
-            .then(response => response.json())
-            .then(data => {
-                resultDiv.innerHTML = `Predicted Price: $${data.price}`;
-            });
-            */
-        }
-    </script>
 
 </body>
 </html>
